@@ -1,45 +1,50 @@
 import { Stack } from "expo-router";
-import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import * as eva from "@eva-design/eva";
+import {
+  ApplicationProvider,
+  IconRegistry,
+  Layout,
+  Text,
+} from "@ui-kitten/components";
+import React from "react";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+
 export default function RootLayout() {
   return (
-    <ApplicationProvider {...eva} theme={{...eva.light,
-      ...{
-        "color-primary-100": "red",
-        "color-primary-200": "red",
-        "color-primary-300": "red",
-        "color-primary-400": "red",
-        "color-primary-500": "#f451fe",
-        "color-primary-600": "#000",
-        "color-primary-700": "#000",
-        "color-primary-800": "red",
-        "color-primary-900": "red",
-      
-        "background-basic-color-1": "red",
-  "background-basic-color-2": "#f451fe",
-  "background-basic-color-3": "#f451fe",
-  "background-basic-color-4": "#f451fe",
-
-  "border-basic-color-1": "#f451fe",
-  "border-basic-color-2": "#f451fe",
-  "border-basic-color-3": "#f451fe",
-  "border-basic-color-4": "#f451fe",
-  "border-basic-color-5": "#f451fe"
-      }
-    }}>
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: '#f451fe',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}>
-      <Stack.Screen name="index" options={{title: 'Login Page',headerBackButtonMenuEnabled:false}} />
-      <Stack.Screen name="details" options={{title:'Profile',headerBackButtonMenuEnabled:false}} />
-    </Stack>
-    </ApplicationProvider>
+    <React.Fragment>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider
+        {...eva}
+        theme={{
+          ...eva.light,
+          ...{
+            // ...
+            "color-primary-100": "#00524C",
+            "color-primary-200": "#d9e4ff",
+            "color-primary-300": "#a6c1ff",
+            "color-primary-400": "#598bff",
+            "color-primary-500": "#3366ff",
+            "color-primary-600": "#284de0",
+            "color-primary-700": "#2541cc",
+            "color-primary-800": "#00524C",
+            "color-primary-900": "#00524C",
+            // ...
+          },
+        }}
+      >
+        <Stack>
+          <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="details"
+            options={{ headerShown: false, headerBackButtonMenuEnabled: false }}
+          />
+        </Stack>
+      </ApplicationProvider>
+    </React.Fragment>
   );
 }
